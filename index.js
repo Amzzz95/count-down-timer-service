@@ -1,1 +1,1 @@
-exports.app = require('./server');
+exports.app = require("./localServer/server");

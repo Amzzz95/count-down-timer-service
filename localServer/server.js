@@ -3,11 +3,11 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
-const router = require("./router");
+const router = require("../router");
 
 const mongoose = require("mongoose");
 
-const db = require("./config/db");
+const db = require("../config/db");
 
 mongoose.connect(db.url, db.options, (err) => {
   if (err) {
