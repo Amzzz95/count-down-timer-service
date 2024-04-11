@@ -3,7 +3,6 @@ const db = {
   options: {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
   },
 };
 

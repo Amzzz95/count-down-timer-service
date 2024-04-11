@@ -3,18 +3,17 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
-const router = require("../router");
+const router = require("./router");
 
 const mongoose = require("mongoose");
 
-const db = require("../config/db");
+const db = require("./config/db");
 
-mongoose.connect(db.url, db.options, (err) => {
-  if (err) {
-    console.log(db);
-    console.log(err);
-  }
-});
+mongoose
+  .connect(db.url, db.options)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("Error connecting MongoDB: ", err));
+
 const port = process.env.PORT || 8000;
 
 const app = express();
