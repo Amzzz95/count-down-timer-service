@@ -24,6 +24,15 @@ class CounterController {
     }
   }
 
+  async readActiveCounter(req, res) {
+    try {
+      const response = await counterService.readActiveCounter();
+      return baseHelper.success(res, response);
+    } catch (error) {
+      return baseHelper.error(res, error);
+    }
+  }
+
   async update(req, res) {
     try {
       const data = req.body;

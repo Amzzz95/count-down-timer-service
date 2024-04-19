@@ -15,7 +15,22 @@ class CounterService {
 
   async read() {
     try {
-      const response = await Counter.find();
+      const response = await Counter.find().sort({ createdTime: -1 });
+      console.log(`fetched countdowns count: ${response.length}`);
+      return response;
+    } catch (err) {
+      console.error(`error in read countdown service: ${err.message}`);
+      throw Error(err);
+    }
+  }
+
+  async readActiveCounter() {
+    try {
+      const response = await Counter.find({
+        $and: [
+          { deleteDate: { $exists: false } }, // Entries without a deleted time
+        ],
+      }).sort({ createdTime: -1 });
       console.log(`fetched countdowns count: ${response.length}`);
       return response;
     } catch (err) {

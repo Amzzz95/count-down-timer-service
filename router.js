@@ -11,6 +11,7 @@ router.use(trimmer);
 // counter routes
 router.post("/counter", counterController.create);
 router.get("/counter", counterController.read);
+router.get("/active-counter", counterController.readActiveCounter);
 router.put("/counter", counterController.update);
 
 module.exports = router;
